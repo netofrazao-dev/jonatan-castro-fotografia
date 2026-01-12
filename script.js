@@ -260,14 +260,14 @@ Olá! Meu nome é ${nome}.
 
 Tenho interesse em serviços fotográficos.
 
-📸 Tipo de sessão: ${servicoTexto}
-📧 E-mail: ${email}
+ Tipo de sessão: ${servicoTexto}
+ E-mail: ${email}
 
-📝 Mensagem:
+ Mensagem:
 ${mensagem}
     `.trim();
 
-    const numeroWhatsApp = "5599999999999"; // ← TROQUE PELO NÚMERO REAL
+    const numeroWhatsApp = "5591992957604"; // ← TROQUE PELO NÚMERO REAL
     const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoWhatsApp)}`;
 
     window.open(url, "_blank");
