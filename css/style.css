@@ -1271,8 +1271,9 @@ body.no-scroll {
 .event-card,
 .contact__block,
 .contact__form {
-  background: transparent !important;
+  background: var(--color-surface);
 }
+
 .footer {
   background-color: #f8f8f8;
   border-top: 1px solid var(--color-border-subtle);
@@ -1293,4 +1294,19 @@ body.no-scroll {
 .footer__link:hover {
   color: var(--color-accent);
 }
+/*fonte*/
+body {
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+}
+h1, h2, h3, h4 {
+  font-weight: 700;
+}
+h1 {
+  font-weight: 800;
+}
 
+.service-card,
+.event-card {
+  color: var(--color-text);
+}
