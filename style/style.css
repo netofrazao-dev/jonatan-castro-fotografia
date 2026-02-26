@@ -365,7 +365,7 @@ body.no-scroll {
       rgba(255, 255, 255, 0.55),
       rgba(255, 250, 240, 0.80)
     ),
-    url("../imagens/hero.jpg") center / cover no-repeat;
+    url("../imagens/hero.webp") center / cover no-repeat;
 }
 
 .hero__overlay {
