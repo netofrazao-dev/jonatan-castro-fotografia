@@ -358,14 +358,37 @@ body.no-scroll {
   align-items: center;
   isolation: isolate;
   overflow: hidden;
-  /* um pouco mais branco em cima da foto */
-  background:
+  
+  /* Mantemos o fundo branco sugerido anteriormente para o celular */
+  background-color: #ffffff; 
+  
+  background-image: 
     linear-gradient(
       to bottom,
-      rgba(255, 255, 255, 0.438),
-      rgba(255, 250, 240, 0.719)
+      rgba(255, 255, 255, 0.3),
+      rgba(255, 250, 240, 0.2)
     ),
-    url("../imagens/hero.jpg") center / cover no-repeat;
+    url("../imagens/hero.png");
+    
+  /* --- ALTERAÇÃO AQUI --- */
+  /* Movemos 10% para a direita (de 50% para 60%) e 10% para cima (de 50% para 40%) */
+  background-position: 60% 40%; 
+  /* ---------------------- */
+  
+  background-repeat: no-repeat;
+  
+  /* No PC ele continua preenchendo bem */
+  background-size: cover; 
+}
+
+/* Mantemos o ajuste para celular */
+@media (max-width: 768px) {
+  .hero {
+    /* No celular, usamos '90% auto' para o logo inteiro aparecer */
+    background-size: 90% auto; 
+    /* Reduzimos a altura mínima */
+    min-height: 60vh; 
+  }
 }
 
 .hero__overlay {
