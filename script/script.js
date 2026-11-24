@@ -1,275 +1,261 @@
-/*  Autor: (Neto Frazao)
-  --------------------------------------------------------------
-  SCRIPT PRINCIPAL - LUMEN STUDIO
-  Funcionalidades:
-    - Menu mobile (abrir/fechar)
-    - Scroll suave para seções âncora
-    - Lightbox simples para o portfólio
-    - Atualização do ano no footer
-  Observação:
-    JavaScript puro, organizado e fácil de adaptar.
-  --------------------------------------------------------------
-*/
+/* =========================================================
+   Jonatan Castro Fotografia — interações
+   Autor: Neto Frazão
+   - Menu mobile
+   - Topo que muda ao rolar + link ativo
+   - Slideshow do topo
+   - Filtro do portfólio
+   - Visualizador de fotos (setas, teclado e deslizar)
+   - Animações ao rolar
+   - Formulário que abre o WhatsApp pronto
+   ========================================================= */
 
-document.addEventListener("DOMContentLoaded", function () {
-  // Seletores principais
-  const header = document.querySelector(".header");
-  const nav = document.querySelector(".header__nav");
-  const toggleButton = document.querySelector(".header__toggle");
-  const navLinks = document.querySelectorAll("[data-scroll]");
-  const contactButtons = document.querySelectorAll(".js-scroll-to-contact");
-  const lightbox = document.getElementById("lightbox");
-  const lightboxImage = lightbox ? lightbox.querySelector(".lightbox__image") : null;
-  const lightboxCaption = lightbox ? lightbox.querySelector(".lightbox__caption") : null;
-  const lightboxCloseButton = lightbox ? lightbox.querySelector(".lightbox__close") : null;
-  const portfolioItems = document.querySelectorAll(".portfolio__item");
-  const currentYearEl = document.getElementById("current-year");
+(function () {
+  "use strict";
 
-  // Atualiza o ano atual no footer
-  if (currentYearEl) {
-    currentYearEl.textContent = new Date().getFullYear();
+  const WHATSAPP = "5591992279801";
+  const doc = document.documentElement;
+  doc.classList.add("js");
+
+  const $ = (s, el = document) => el.querySelector(s);
+  const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
+  const reduzMovimento = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const ano = $("#ano");
+  if (ano) ano.textContent = new Date().getFullYear();
+
+  /* ---------- Menu mobile ---------- */
+  const header = $(".header");
+  const toggle = $(".menu-toggle");
+  const nav = $("#menu");
+
+  function setMenu(aberto) {
+    nav.classList.toggle("is-open", aberto);
+    header.classList.toggle("is-open", aberto);
+    toggle.setAttribute("aria-expanded", String(aberto));
+    toggle.setAttribute("aria-label", aberto ? "Fechar menu" : "Abrir menu");
+    document.body.classList.toggle("no-scroll", aberto);
+  }
+  toggle.addEventListener("click", () => setMenu(!nav.classList.contains("is-open")));
+  $$("a", nav).forEach((a) => a.addEventListener("click", () => setMenu(false)));
+  window.addEventListener("resize", () => window.innerWidth >= 900 && setMenu(false));
+
+  /* ---------- Topo ao rolar + link ativo ---------- */
+  const onScroll = () => header.classList.toggle("is-scrolled", window.scrollY > 40);
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+
+  const links = $$(".nav__link");
+  if ("IntersectionObserver" in window) {
+    const secoes = links.map((l) => $(l.getAttribute("href"))).filter(Boolean);
+    const obs = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          if (!e.isIntersecting) return;
+          links.forEach((l) => l.classList.toggle("is-active", l.getAttribute("href") === `#${e.target.id}`));
+        });
+      },
+      { rootMargin: "-45% 0px -50% 0px" }
+    );
+    secoes.forEach((s) => obs.observe(s));
   }
 
-  // -----------------------------------------------------------
-  // MENU MOBILE
-  // -----------------------------------------------------------
+  /* ---------- Slideshow do topo ---------- */
+  const slides = $$(".hero__slide");
+  const dotsBox = $(".hero__dots");
+  let atual = 0;
+  let timer = null;
 
-  /**
-   * Abre/fecha o menu mobile.
-   * Adiciona e remove classes no botão, navegação e body (para travar o scroll).
-   */
-  function toggleMobileMenu() {
-    if (!nav || !toggleButton) return;
-
-    const isOpen = nav.classList.contains("header__nav--open");
-
-    nav.classList.toggle("header__nav--open");
-    toggleButton.classList.toggle("header__toggle--active");
-    document.body.classList.toggle("no-scroll", !isOpen);
-
-    toggleButton.setAttribute("aria-expanded", String(!isOpen));
-  }
-
-  if (toggleButton) {
-    toggleButton.addEventListener("click", toggleMobileMenu);
-  }
-
-  // -----------------------------------------------------------
-  // SCROLL SUAVE
-  // -----------------------------------------------------------
-
-  /**
-   * Executa scroll suave até o elemento alvo,
-   * considerando a altura do header fixo.
-   * @param {HTMLElement} targetElement
-   */
-  function smoothScrollTo(targetElement) {
-    if (!targetElement) return;
-
-    const headerHeight = header ? header.offsetHeight : 0;
-
-    // Posição do elemento em relação ao topo da página
-    const elementPosition =
-      targetElement.getBoundingClientRect().top + window.pageYOffset;
-
-    const offsetPosition = elementPosition - headerHeight - 12; // leve ajuste visual
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth",
-    });
-  }
-
-  /**
-   * Handler genérico para links com atributo data-scroll,
-   * que aponta para ids de seções (ex: #about, #services).
-   */
-  function handleNavLinkClick(event) {
-    const link = event.currentTarget;
-    const href = link.getAttribute("href");
-
-    // Garante que é uma âncora interna (#id)
-    if (!href || !href.startsWith("#")) return;
-
-    const targetId = href.substring(1);
-    const targetElement = document.getElementById(targetId);
-
-    if (!targetElement) return;
-
-    event.preventDefault();
-    smoothScrollTo(targetElement);
-
-    // Fecha o menu mobile ao clicar em um item (apenas em telas menores)
-    if (window.innerWidth < 768 && nav.classList.contains("header__nav--open")) {
-      toggleMobileMenu();
+  function carregar(img) {
+    if (img.dataset.src) {
+      img.srcset = img.dataset.srcset || "";
+      img.src = img.dataset.src;
+      delete img.dataset.src;
+      delete img.dataset.srcset;
     }
   }
 
-  navLinks.forEach(function (link) {
-    link.addEventListener("click", handleNavLinkClick);
-  });
-
-  // Botões específicos que devem rolar até o contato
-  contactButtons.forEach(function (button) {
-    button.addEventListener("click", function () {
-      const contactSection = document.getElementById("contact");
-      smoothScrollTo(contactSection);
+  function mostrar(i) {
+    atual = (i + slides.length) % slides.length;
+    carregar(slides[atual]);
+    carregar(slides[(atual + 1) % slides.length]);
+    slides.forEach((s, n) => s.classList.toggle("is-active", n === atual));
+    $$(".hero__dot", dotsBox).forEach((d, n) => {
+      d.classList.toggle("is-active", n === atual);
+      d.setAttribute("aria-selected", String(n === atual));
     });
-  });
-
-  // -----------------------------------------------------------
-  // EFEITO HEADER AO ROLAR
-  // -----------------------------------------------------------
-
-  /**
-   * Adiciona uma classe ao header quando a página é rolada
-   * para aplicar sombra e reforçar a separação do conteúdo.
-   */
-  function handleScrollHeader() {
-    if (!header) return;
-
-    if (window.scrollY > 10) {
-      header.classList.add("header--scrolled");
-    } else {
-      header.classList.remove("header--scrolled");
-    }
   }
 
-  window.addEventListener("scroll", handleScrollHeader);
-  handleScrollHeader(); // estado inicial
+  function iniciar() {
+    clearInterval(timer);
+    if (!reduzMovimento) timer = setInterval(() => mostrar(atual + 1), 6000);
+  }
 
-  // -----------------------------------------------------------
-  // LIGHTBOX / MODAL DE IMAGENS DO PORTFÓLIO
-  // -----------------------------------------------------------
+  if (slides.length > 1) {
+    slides.forEach((_, n) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "hero__dot";
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-label", `Foto ${n + 1}`);
+      b.addEventListener("click", () => {
+        mostrar(n);
+        iniciar();
+      });
+      dotsBox.appendChild(b);
+    });
+    // Carrega as outras fotos só depois que a página terminou de abrir.
+    window.addEventListener("load", () => setTimeout(() => carregar(slides[1]), 800));
+    mostrar(0);
+    iniciar();
+    document.addEventListener("visibilitychange", () => (document.hidden ? clearInterval(timer) : iniciar()));
+  }
 
-  /**
-   * Abre o lightbox com a imagem e legenda fornecidas.
-   * @param {string} src - Caminho da imagem em alta
-   * @param {string} alt - Texto alternativo da imagem
-   * @param {string} caption - Legenda opcional para exibir abaixo da imagem
-   */
-  function openLightbox(src, alt, caption) {
-    if (!lightbox || !lightboxImage || !lightboxCaption) return;
+  /* ---------- Filtro do portfólio ---------- */
+  const itens = $$(".gallery__item");
+  $$(".filter").forEach((btn) =>
+    btn.addEventListener("click", () => {
+      const f = btn.dataset.filter;
+      $$(".filter").forEach((b) => {
+        b.classList.toggle("is-active", b === btn);
+        b.setAttribute("aria-pressed", String(b === btn));
+      });
+      itens.forEach((it) => {
+        const mostra = f === "todos" || it.dataset.cat.split(" ").includes(f);
+        it.classList.toggle("is-hidden", !mostra);
+      });
+    })
+  );
 
-    lightboxImage.src = src;
-    lightboxImage.alt = alt || "";
-    lightboxCaption.textContent = caption || "";
+  /* ---------- Visualizador de fotos ---------- */
+  const lb = $("#lightbox");
+  const lbImg = $(".lightbox__img", lb);
+  const lbCap = $(".lightbox__caption", lb);
+  let lista = [];
+  let pos = 0;
+  let ultimoFoco = null;
 
-    lightbox.classList.add("lightbox--open");
-    lightbox.setAttribute("aria-hidden", "false");
+  function abrirFoto(i) {
+    pos = (i + lista.length) % lista.length;
+    const btn = lista[pos];
+    const img = $("img", btn);
+    lbImg.classList.add("is-loading");
+    lbImg.onload = () => lbImg.classList.remove("is-loading");
+    lbImg.src = btn.dataset.full || img.currentSrc || img.src;
+    lbImg.alt = img.alt;
+    const titulo = $("figcaption strong", btn)?.textContent || "";
+    const sub = $("figcaption span", btn)?.textContent || "";
+    lbCap.innerHTML = "";
+    const t = document.createElement("strong");
+    t.textContent = titulo;
+    lbCap.append(t, document.createTextNode(`${sub}  •  ${pos + 1} de ${lista.length}`));
+    // Pré-carrega a próxima
+    const prox = lista[(pos + 1) % lista.length];
+    if (prox) new Image().src = prox.dataset.full;
+  }
+
+  function abrirLightbox(btn) {
+    lista = $$(".gallery__item:not(.is-hidden) .gallery__btn");
+    ultimoFoco = btn;
+    lb.hidden = false;
     document.body.classList.add("no-scroll");
+    abrirFoto(lista.indexOf(btn));
+    $(".lightbox__close", lb).focus();
   }
 
-  /**
-   * Fecha o lightbox e limpa a imagem exibida.
-   */
-  function closeLightbox() {
-    if (!lightbox || !lightboxImage) return;
-
-    lightbox.classList.remove("lightbox--open");
-    lightbox.setAttribute("aria-hidden", "true");
+  function fecharLightbox() {
+    lb.hidden = true;
+    lbImg.removeAttribute("src");
     document.body.classList.remove("no-scroll");
-
-    // Opcional: limpar src para evitar carregar imagem em background
-    lightboxImage.src = "";
-    lightboxImage.alt = "";
+    ultimoFoco?.focus();
   }
 
-  // Clique nos cards do portfólio para abrir o lightbox
-  portfolioItems.forEach(function (item) {
-    item.addEventListener("click", function () {
-      const img = item.querySelector("img");
-      if (!img) return;
-
-      // Usa o data-full se estiver definido; caso contrário, usa o src atual
-      const highResSrc = item.getAttribute("data-full") || img.src;
-      const alt = img.alt || "";
-      const titleEl = item.querySelector(".portfolio__title");
-
-      const caption = titleEl ? titleEl.textContent.trim() : "";
-
-      openLightbox(highResSrc, alt, caption);
-    });
+  $$(".gallery__btn").forEach((b) => b.addEventListener("click", () => abrirLightbox(b)));
+  $(".lightbox__close", lb).addEventListener("click", fecharLightbox);
+  $(".lightbox__prev", lb).addEventListener("click", () => abrirFoto(pos - 1));
+  $(".lightbox__next", lb).addEventListener("click", () => abrirFoto(pos + 1));
+  lb.addEventListener("click", (e) => {
+    if (e.target === lb || e.target.classList.contains("lightbox__figure")) fecharLightbox();
   });
-
-  // Botão de fechar do lightbox
-  if (lightboxCloseButton) {
-    lightboxCloseButton.addEventListener("click", closeLightbox);
-  }
-
-  // Clique fora do conteúdo interno fecha o lightbox
-  if (lightbox) {
-    lightbox.addEventListener("click", function (event) {
-      if (event.target === lightbox) {
-        closeLightbox();
-      }
-    });
-  }
-
-  // Tecla ESC fecha o lightbox, se estiver aberto
-  document.addEventListener("keydown", function (event) {
-    if (event.key === "Escape" || event.key === "Esc") {
-      if (lightbox && lightbox.classList.contains("lightbox--open")) {
-        closeLightbox();
-      }
+  document.addEventListener("keydown", (e) => {
+    if (lb.hidden) {
+      if (e.key === "Escape" && nav.classList.contains("is-open")) setMenu(false);
+      return;
     }
+    if (e.key === "Escape") fecharLightbox();
+    if (e.key === "ArrowLeft") abrirFoto(pos - 1);
+    if (e.key === "ArrowRight") abrirFoto(pos + 1);
   });
-});
 
-//direcionar para agendar sessao
-document.addEventListener("DOMContentLoaded", () => {
-  const faqItems = document.querySelectorAll(".faq-item");
-
-  faqItems.forEach((item) => {
-    const question = item.querySelector(".faq-question");
-
-    question.addEventListener("click", () => {
-      const isOpen = item.classList.contains("is-open");
-
-      faqItems.forEach((el) => el.classList.remove("is-open"));
-
-      if (!isOpen) {
-        item.classList.add("is-open");
-      }
-    });
+  // Deslizar o dedo no celular
+  let toqueX = null;
+  lb.addEventListener("touchstart", (e) => (toqueX = e.touches[0].clientX), { passive: true });
+  lb.addEventListener("touchend", (e) => {
+    if (toqueX === null) return;
+    const dx = e.changedTouches[0].clientX - toqueX;
+    if (Math.abs(dx) > 50) abrirFoto(pos + (dx < 0 ? 1 : -1));
+    toqueX = null;
   });
-});
 
-// FORMULÁRIO DE CONTATO → WHATSAPP
-document.addEventListener("DOMContentLoaded", function () {
-  const form = document.getElementById("contact-form");
+  /* ---------- Animações ao rolar ---------- */
+  const reveals = $$(".reveal");
+  if ("IntersectionObserver" in window && !reduzMovimento) {
+    const ro = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((e) => {
+          // Mostra ao entrar na tela ou se a pessoa já rolou além (rolagem rápida / links do menu).
+          if (e.isIntersecting || e.boundingClientRect.top < 0) {
+            e.target.classList.add("is-visible");
+            ro.unobserve(e.target);
+          }
+        });
+      },
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.08 }
+    );
+    reveals.forEach((el) => ro.observe(el));
+  } else {
+    reveals.forEach((el) => el.classList.add("is-visible"));
+  }
 
-  if (!form) return;
+  /* ---------- Formulário → WhatsApp ---------- */
+  const form = $("#form-contato");
+  const erro = $(".form__error", form);
 
-  form.addEventListener("submit", function (event) {
-    event.preventDefault(); // impede recarregamento da página
+  // Botões "Quero este ensaio" já escolhem o serviço no formulário
+  $$("[data-whats]").forEach((b) =>
+    b.addEventListener("click", () => {
+      const sel = form.servico;
+      const opt = Array.from(sel.options).find((o) => o.text === b.dataset.whats);
+      if (opt) sel.value = opt.value || opt.text;
+      setTimeout(() => form.nome.focus({ preventScroll: true }), 700);
+    })
+  );
 
-    const nome = document.getElementById("name").value.trim();
-    const email = document.getElementById("email").value.trim();
-    const servico = document.getElementById("service").value;
-    const mensagem = document.getElementById("message").value.trim();
+  const formatarData = (iso) => (iso ? iso.split("-").reverse().join("/") : "");
 
-    let servicoTexto = "Não informado";
-    if (servico === "retrato") servicoTexto = "Retrato profissional";
-    if (servico === "editorial") servicoTexto = "Editorial / Campanha";
-    if (servico === "produto") servicoTexto = "Still / Produto";
-    if (servico === "outro") servicoTexto = "Outro";
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    erro.hidden = true;
+    $$(".is-invalid", form).forEach((el) => el.classList.remove("is-invalid"));
 
-    const textoWhatsApp = `
-Olá! Meu nome é ${nome}.
+    const nome = form.nome.value.trim();
+    const servico = form.servico.value;
+    if (!nome || !servico) {
+      const campo = !nome ? form.nome : form.servico;
+      campo.classList.add("is-invalid");
+      campo.focus();
+      erro.textContent = !nome ? "Informe o seu nome." : "Escolha o tipo de sessão.";
+      erro.hidden = false;
+      return;
+    }
 
-Tenho interesse em serviços fotográficos.
+    const linhas = [
+      `Olá! Meu nome é ${nome}.`,
+      `Tenho interesse em: ${servico}.`,
+      form.data.value ? `Data desejada: ${formatarData(form.data.value)}.` : "",
+      form.mensagem.value.trim() ? `\n${form.mensagem.value.trim()}` : "",
+    ].filter(Boolean);
 
- Tipo de sessão: ${servicoTexto}
- E-mail: ${email}
-
- Mensagem:
-${mensagem}
-    `.trim();
-
-    const numeroWhatsApp = "5591992279801"; // ← TROQUE PELO NÚMERO REAL
-    const url = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(textoWhatsApp)}`;
-
-    window.open(url, "_blank");
+    window.open(`https://wa.me/${WHATSAPP}?text=${encodeURIComponent(linhas.join("\n"))}`, "_blank", "noopener");
   });
-});
+})();

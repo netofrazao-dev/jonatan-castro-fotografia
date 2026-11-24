@@ -1,638 +1,517 @@
-<!--Autor: (Neto Frazao)-->
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <link rel="preload" fetchpriority="high" as="image" href="imagens/hero.webp" type="image/webp">
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Jonatan Castro Fotografia  | Fotografia Profissional</title>
-  <meta name="description" content="Estúdio de fotografia profissional especializado em retratos, editoriais, branding e eventos. Atmosfera minimalista, foco absoluto na luz e na sua história." />
-  <link rel="icon" type="image/png" href="imagens/LOGO SEM FUNDO.png">
-  <!-- Fonte elegante e leve (pode ser alterada depois) -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap"
-    rel="stylesheet"
-  />
+  <!-- Autor: Neto Frazão -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Jonatan Castro Fotografia | Estúdio fotográfico em Breves – PA</title>
+  <meta name="description" content="Estúdio de fotografia em Breves – PA. Ensaios gestante, infantil, família, casal, 15 anos, retratos profissionais, formaturas e cobertura de eventos. Agende pelo WhatsApp.">
+  <meta name="theme-color" content="#0e0d0c">
 
-  <!-- CSS principal -->
-  <link rel="stylesheet" href="style/style.css" />
+  <!-- Compartilhamento (WhatsApp, Instagram, Facebook) -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Jonatan Castro Fotografia">
+  <meta property="og:title" content="Jonatan Castro Fotografia | Estúdio em Breves – PA">
+  <meta property="og:description" content="Ensaios, retratos, formaturas e eventos com direção cuidadosa e tratamento profissional.">
+  <meta property="og:image" content="imagens/marca/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+
+  <link rel="icon" href="favicon.ico" sizes="any">
+  <link rel="icon" href="imagens/marca/favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="imagens/marca/apple-touch-icon.png">
+
+  <link rel="preload" as="image" href="imagens/fotos/quinze-anos-1200.webp"
+        imagesrcset="imagens/fotos/quinze-anos-640.webp 640w, imagens/fotos/quinze-anos-1200.webp 1200w, imagens/fotos/quinze-anos-2000.webp 2000w"
+        imagesizes="100vw" fetchpriority="high">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style/style.css?v=2">
+
+  <!-- Dados do estúdio para o Google -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "Jonatan Castro Fotografia",
+    "description": "Estúdio de fotografia: ensaios, retratos profissionais, formaturas e cobertura de eventos.",
+    "telephone": "+55-91-99227-9801",
+    "email": "jonatanbreves@hotmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Rua Justo Chermont, 1626 – Bairro Aeroporto",
+      "addressLocality": "Breves",
+      "addressRegion": "PA",
+      "addressCountry": "BR"
+    },
+    "sameAs": [
+      "https://www.instagram.com/jonatancastro_fotografia/",
+      "https://www.facebook.com/jonatancastrofotografia/"
+    ]
+  }
+  </script>
 </head>
 <body>
-  <!-- HEADER / NAVEGAÇÃO -->
-  <header class="header" id="top">
+  <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+  <!-- ===================== TOPO ===================== -->
+  <header class="header" id="topo">
     <div class="container header__inner">
-      <!-- Logo / Nome do estúdio -->
-      <a href="#hero" class="header__logo">
-        <span id="NomeTitulo">Jonatan Castro</span><span>Fotografia</span>
+      <a href="#inicio" class="brand" aria-label="Jonatan Castro Fotografia — início">
+        <img src="imagens/marca/camera.png" alt="" width="46" height="32" class="brand__mark">
+        <span class="brand__text">
+          <span class="brand__name">Jonatan Castro</span>
+          <span class="brand__tag">Fotografia</span>
+        </span>
       </a>
 
-      <!-- Botão menu mobile -->
-      <button
-        class="header__toggle"
-        type="button"
-        aria-label="Abrir menu principal"
-        aria-expanded="false"
-        aria-controls="main-navigation"
-      >
-        <span class="header__toggle-line"></span>
-        <span class="header__toggle-line"></span>
+      <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false" aria-controls="menu">
+        <span></span><span></span>
       </button>
 
-      <!-- Navegação principal -->
-      <nav class="header__nav" id="main-navigation" aria-label="Navegação principal">
-        <ul class="header__menu">
-          <li class="header__menu-item">
-            <a href="#hero" class="header__menu-link" data-scroll>Início</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#about" class="header__menu-link" data-scroll>Sobre</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#portfolio" class="header__menu-link" data-scroll>Portfólio</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#services" class="header__menu-link" data-scroll>Serviços</a>
-          </li>
-          <li class="header__menu-item">
-            <a href="#eventos" class="header__menu-link" data-scroll>Eventos</a>  
-          </li>
-
-          <li class="header__menu-item">
-            <a href="#diferenciais" class="header__menu-link" data-scroll>Diferenciais</a>
-          </li>
-
-          <li class="header__menu-item">
-            <a href="#contact" class="header__menu-link" data-scroll>Contato</a>
-          </li>
+      <nav class="nav" id="menu" aria-label="Menu principal">
+        <ul class="nav__list">
+          <li><a href="#sobre" class="nav__link">Sobre</a></li>
+          <li><a href="#portfolio" class="nav__link">Portfólio</a></li>
+          <li><a href="#servicos" class="nav__link">Serviços</a></li>
+          <li><a href="#eventos" class="nav__link">Eventos</a></li>
+          <li><a href="#duvidas" class="nav__link">Dúvidas</a></li>
+          <li><a href="#contato" class="nav__link">Contato</a></li>
         </ul>
-
-        <!-- Botão de contato (WhatsApp) no header -->
-        <a
-          href="https://wa.me/5591992279801?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+sess%C3%A3o+de+fotos."
-          class="btn btn--primary header__cta"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          WhatsApp
+        <a href="https://wa.me/5591992279801?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20de%20fotos." class="btn btn--gold btn--sm nav__cta" target="_blank" rel="noopener">
+          <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg>Agendar
         </a>
       </nav>
     </div>
   </header>
 
-  <main>
-<section class="hero" id="hero" aria-labelledby="hero-title">
-  <img src="imagens/hero.webp" 
-       alt="Fundo do estúdio de fotografia" 
-       class="hero__bg-image" 
-       fetchpriority="high" 
-       loading="eager">
+  <main id="conteudo">
+    <!-- ===================== HERO ===================== -->
+    <section class="hero" id="inicio" aria-labelledby="hero-titulo">
+      <div class="hero__slides" aria-hidden="true">
+        <img class="hero__slide is-active" src="imagens/fotos/quinze-anos-1200.webp"
+             srcset="imagens/fotos/quinze-anos-640.webp 640w, imagens/fotos/quinze-anos-1200.webp 1200w, imagens/fotos/quinze-anos-2000.webp 2000w"
+             sizes="100vw" alt="" fetchpriority="high" style="--pos: 40% 40%">
+        <img class="hero__slide" data-src="imagens/fotos/casal-1200.webp"
+             data-srcset="imagens/fotos/casal-640.webp 640w, imagens/fotos/casal-1200.webp 1200w, imagens/fotos/casal-2000.webp 2000w"
+             sizes="100vw" alt="" style="--pos: 55% 30%">
+        <img class="hero__slide" data-src="imagens/fotos/familia-1200.webp"
+             data-srcset="imagens/fotos/familia-640.webp 640w, imagens/fotos/familia-1200.webp 1200w, imagens/fotos/familia-2000.webp 2000w"
+             sizes="100vw" alt="" style="--pos: 60% 30%">
+        <img class="hero__slide" data-src="imagens/fotos/gestante-1200.webp"
+             data-srcset="imagens/fotos/gestante-640.webp 640w, imagens/fotos/gestante-1200.webp 1200w, imagens/fotos/gestante-2000.webp 2000w"
+             sizes="100vw" alt="" style="--pos: 55% 40%">
+      </div>
+      <div class="hero__shade" aria-hidden="true"></div>
 
-  <div class="hero__overlay" aria-hidden="true"></div>
-  
-  <div class="container hero__content">
-    <p class="hero__eyebrow">Estúdio de Fotografia • Breves</p>
-    <h1 class="hero__title" id="hero-title">
-      Fotografia profissional,<br />
-      com foco na sua história.
-    </h1>
-    <p class="hero__subtitle">
-      Retratos, editoriais, branding e momentos únicos capturados com
-      linguagem visual limpa, luz precisa e direção cuidadosa.
-    </p>
+      <div class="container hero__content">
+        <p class="eyebrow eyebrow--light">Estúdio fotográfico • Breves – PA</p>
+        <h1 class="hero__title" id="hero-titulo">Fotografia que conta <em>a sua história</em>.</h1>
+        <p class="hero__text">
+          Ensaios, retratos e eventos com luz precisa, direção cuidadosa e um tratamento
+          que valoriza quem você é.
+        </p>
+        <div class="hero__actions">
+          <a href="https://wa.me/5591992279801?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20de%20fotos." class="btn btn--gold" target="_blank" rel="noopener">
+            <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg>Agendar pelo WhatsApp
+          </a>
+          <a href="#portfolio" class="btn btn--outline-light">Ver portfólio</a>
+        </div>
+        <div class="hero__dots" role="tablist" aria-label="Fotos em destaque"></div>
+      </div>
+      <a href="#sobre" class="hero__scroll" aria-label="Rolar para baixo"><span></span></a>
+    </section>
 
-    <div class="hero__actions">
-      <a href="#portfolio" class="btn btn--primary" data-scroll>Ver portfólio</a>
-      <a href="#contact" class="btn btn--ghost">Agendar sessão</a>
+    <!-- Faixa de especialidades -->
+    <div class="ticker" aria-label="Especialidades">
+      <div class="ticker__track">
+        <span>Gestante</span><span>Infantil</span><span>Família</span><span>Casal</span><span>15 anos</span><span>Retrato profissional</span><span>Formaturas</span><span>Aniversários</span><span>Eventos</span>
+        <span aria-hidden="true">Gestante</span><span aria-hidden="true">Infantil</span><span aria-hidden="true">Família</span><span aria-hidden="true">Casal</span><span aria-hidden="true">15 anos</span><span aria-hidden="true">Retrato profissional</span><span aria-hidden="true">Formaturas</span><span aria-hidden="true">Aniversários</span><span aria-hidden="true">Eventos</span>
+      </div>
     </div>
-  </div>
-</section>
 
-    <!-- SOBRE O ESTÚDIO -->
-    <section class="section section--about" id="about" aria-labelledby="about-title">
-      <div class="container section__inner section__inner--two-columns">
-        <div class="section__content">
-          <h2 class="section__title" id="about-title">Sobre o estúdio</h2>
-          <p class="section__text">
-            Jonatan Castro Fotografia é um estúdio de fotografia focado em
-            retratar pessoas, marcas e histórias com elegância, precisão e
-            autenticidade. Acreditamos que menos é mais: cenários limpos,
-            composição equilibrada e luz que valoriza o que realmente importa.
-          </p>
-          <p class="section__text">
-            Nosso espaço foi pensado para proporcionar conforto e liberdade
-            criativa, com estrutura completa para ensaios autorais, editoriais,
-            campanhas e retratos profissionais.
-          </p>
-        </div>
+    <!-- ===================== SOBRE ===================== -->
+    <section class="section section--light" id="sobre" aria-labelledby="sobre-titulo">
+      <div class="container about">
+        <figure class="about__media reveal">
+          <img src="imagens/fotos/retrato-1200.webp"
+               srcset="imagens/fotos/retrato-640.webp 640w, imagens/fotos/retrato-1200.webp 1200w"
+               sizes="(min-width: 900px) 40vw, 90vw" width="1200" height="1299" loading="lazy" decoding="async"
+               alt="Retrato feminino de blazer preto em fundo bege, feito no estúdio.">
+          <figcaption class="about__badge">
+            <img src="imagens/marca/logo-dourado.webp" alt="Logo Jonatan Castro Fotografia" width="800" height="413" loading="lazy">
+          </figcaption>
+        </figure>
 
-        <aside class="section__aside">
-          <h3 class="section__subtitle">Nossos diferenciais</h3>
-          <ul class="feature-list">
-            <li class="feature-list__item">
-              Direção cuidadosa para quem não está acostumado(a) com câmeras.
-            </li>
-            <li class="feature-list__item">
-              Tratamento fino de imagem com foco em naturalidade.
-            </li>
-            <li class="feature-list__item">
-              Estúdio versátil com luz natural e iluminação controlada.
-            </li>
-            <li class="feature-list__item">
-              Atendimento consultivo para marcas e profissionais.
-            </li>
-            <li class="feature-list__item">
-              Entregas em alta resolução, prontas para impressão e web.
-            </li>
+        <div class="about__content reveal">
+          <p class="eyebrow">Sobre o estúdio</p>
+          <h2 class="section__title" id="sobre-titulo">Menos é mais: <em>luz, composição e verdade</em>.</h2>
+          <p>
+            A Jonatan Castro Fotografia retrata pessoas, marcas e histórias com elegância,
+            precisão e autenticidade. Cenários limpos, composição equilibrada e uma luz que
+            valoriza o que realmente importa.
+          </p>
+          <p>
+            Nosso espaço em Breves foi pensado para você se sentir à vontade, com estrutura
+            completa para ensaios autorais, retratos profissionais e produções personalizadas.
+          </p>
+
+          <ul class="perks">
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Direção cuidadosa, mesmo para quem não tem costume com câmeras</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Tratamento fino de imagem, com foco em naturalidade</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Estúdio com luz natural e iluminação controlada</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Atendimento personalizado do início ao fim</li>
+            <li><svg class="icon" aria-hidden="true"><use href="#i-check"></use></svg>Entrega em alta resolução, pronta para impressão e redes sociais</li>
           </ul>
-        </aside>
-      </div>
-    </section>
-
-    <!-- PORTFÓLIO -->
-    <section class="section section--portfolio" id="portfolio" aria-labelledby="portfolio-title">
-      <div class="container">
-        <header class="section__header">
-          <h2 class="section__title" id="portfolio-title">Portfólio</h2>
-          <p class="section__text section__text--narrow">
-            Uma seleção de trabalhos que traduzem nossa estética: linhas
-            simples, luz precisa e foco em pessoas reais. Clique nas imagens
-            para visualizar em destaque.
-          </p>
-        </header>
-
-        <!-- Galeria de imagens -->
-        <div class="portfolio__grid">
-          <!-- Cada item do portfólio está preparado para abrir no lightbox -->
-          <article
-            class="portfolio__item"
-            data-full="imagens/profissional.webp"
-          >
-            <figure class="portfolio__figure">
-              <img
-                src="imagens/profissional.webp"
-                alt="Retrato editorial em fundo neutro com iluminação lateral."
-                class="portfolio__image"
-              />
-              <figcaption class="portfolio__caption">
-                <h3 class="portfolio__title">Retrato Profissional</h3>
-                <p class="portfolio__category">Retratos • Profissional</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article
-            class="portfolio__item"
-            data-full="imagens/infantil.webp"
-          >
-            <figure class="portfolio__figure">
-              <img
-                src="imagens/infantil.webp"
-                alt="Campanha de moda minimalista com fundo claro."
-                class="portfolio__image"
-              />
-              <figcaption class="portfolio__caption">
-                <h3 class="portfolio__title">Ensaio Infantil</h3>
-                <p class="portfolio__category">Kids</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article
-            class="portfolio__item"
-            data-full="imagens/gestante.webp"
-          >
-            <figure class="portfolio__figure">
-              <img
-                src="imagens/gestante.webp"
-                alt="Retrato corporativo com luz suave e fundo escuro."
-                class="portfolio__image"
-              />
-              <figcaption class="portfolio__caption">
-                <h3 class="portfolio__title">Ensaio Gestante</h3>
-                <p class="portfolio__category">Maternidade</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article
-            class="portfolio__item"
-            data-full="imagens/familia.webp"
-          >
-            <figure class="portfolio__figure">
-              <img
-                src="imagens/familia.webp"
-                alt="Fotografia de produto com composição limpa em fundo neutro."
-                class="portfolio__image"
-              />
-              <figcaption class="portfolio__caption">
-                <h3 class="portfolio__title">Família </h3>
-                <p class="portfolio__category">Ensaio • Família</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article
-            class="portfolio__item"
-            data-full="imagens/casal.webp"
-          >
-            <figure class="portfolio__figure">
-              <img
-                src="imagens/casal.webp"
-                alt="Casal em ensaio externo ao pôr do sol."
-                class="portfolio__image"
-              />
-              <figcaption class="portfolio__caption">
-                <h3 class="portfolio__title">Ensaio Casal</h3>
-                <p class="portfolio__category">Ensaio • Conexão</p>
-              </figcaption>
-            </figure>
-          </article>
-
-          <article
-            class="portfolio__item"
-            data-full="imagens/retrato.webp"
-          >
-            <figure class="portfolio__figure">
-              <img
-                src="imagens/retrato.webp"
-                alt="Série em preto e branco com forte contraste."
-                class="portfolio__image"
-              />
-              <figcaption class="portfolio__caption">
-                <h3 class="portfolio__title">Retrato</h3>
-                <p class="portfolio__category">Ensaio • Pessoal</p>
-              </figcaption>
-            </figure>
-          </article>
         </div>
       </div>
     </section>
 
-    <!-- SERVIÇOS -->
-    <section class="section section--services" id="services" aria-labelledby="services-title">
+    <!-- ===================== PORTFÓLIO ===================== -->
+    <section class="section section--dark" id="portfolio" aria-labelledby="portfolio-titulo">
       <div class="container">
-        <header class="section__header">
-          <h2 class="section__title" id="services-title">Serviços</h2>
-          <p class="section__text section__text--narrow">
-            Pacotes pensados para atender desde profissionais que buscam novas
-            imagens até marcas que desejam construir coleções completas.
-          </p>
+        <header class="section__head reveal">
+          <p class="eyebrow eyebrow--light">Portfólio</p>
+          <h2 class="section__title" id="portfolio-titulo">Trabalhos recentes</h2>
+          <p class="section__lead">Toque em uma foto para ver em tela cheia.</p>
         </header>
 
-        <div class="services__grid">
-          <!-- Card 1 -->
-          <article class="service-card card">
-            <div class="service-card__header">
-              <span class="service-card__tag">Individual</span>
-              <h3 class="service-card__title">Retrato Profissional</h3>
-            </div>
-            <p class="service-card__text">
-              Ideal para profissionais, artistas e criadores de conteúdo que
-              desejam um retrato forte, atual e versátil para múltiplos canais.
-            </p>
-            <ul class="service-card__list">
+        <div class="filters reveal" role="group" aria-label="Filtrar portfólio">
+          <button type="button" class="filter is-active" data-filter="todos" aria-pressed="true">Todos</button>
+          <button type="button" class="filter" data-filter="ensaios" aria-pressed="false">Ensaios</button>
+          <button type="button" class="filter" data-filter="familia" aria-pressed="false">Família &amp; kids</button>
+          <button type="button" class="filter" data-filter="eventos" aria-pressed="false">Eventos</button>
+        </div>
+
+        <div class="gallery" id="galeria">
+          <figure class="gallery__item" data-cat="eventos ensaios">
+            <button type="button" class="gallery__btn" data-full="imagens/fotos/quinze-anos-2000.webp">
+              <img src="imagens/fotos/quinze-anos-640.webp" srcset="imagens/fotos/quinze-anos-640.webp 640w, imagens/fotos/quinze-anos-1200.webp 1200w" sizes="(min-width: 1000px) 33vw, (min-width: 600px) 50vw, 100vw" width="1200" height="801" loading="lazy" decoding="async" alt="Debutante de vestido preto com coroa, deitada entre confetes dourados.">
+              <figcaption><strong>15 anos</strong><span>Ensaio de debutante</span></figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-cat="ensaios">
+            <button type="button" class="gallery__btn" data-full="imagens/fotos/gestante-2000.webp">
+              <img src="imagens/fotos/gestante-640.webp" srcset="imagens/fotos/gestante-640.webp 640w, imagens/fotos/gestante-1200.webp 1200w" sizes="(min-width: 1000px) 33vw, (min-width: 600px) 50vw, 100vw" width="1200" height="921" loading="lazy" decoding="async" alt="Gestante de vestido amarelo sentada em um balanço de tecido, em cenário claro.">
+              <figcaption><strong>Gestante</strong><span>Maternidade</span></figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-cat="ensaios">
+            <button type="button" class="gallery__btn" data-full="imagens/fotos/casal-2000.webp">
+              <img src="imagens/fotos/casal-640.webp" srcset="imagens/fotos/casal-640.webp 640w, imagens/fotos/casal-1200.webp 1200w" sizes="(min-width: 1000px) 33vw, (min-width: 600px) 50vw, 100vw" width="1200" height="1000" loading="lazy" decoding="async" alt="Casal de noivos abraçados, rosto com rosto, em fundo escuro.">
+              <figcaption><strong>Casal</strong><span>Ensaio de noivos</span></figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-cat="familia">
+            <button type="button" class="gallery__btn" data-full="imagens/fotos/infantil-2000.webp">
+              <img src="imagens/fotos/infantil-640.webp" srcset="imagens/fotos/infantil-640.webp 640w, imagens/fotos/infantil-1200.webp 1200w" sizes="(min-width: 1000px) 33vw, (min-width: 600px) 50vw, 100vw" width="1200" height="960" loading="lazy" decoding="async" alt="Bebê sorrindo sentada entre cestos de flores e balões rosa.">
+              <figcaption><strong>Infantil</strong><span>Ensaio temático</span></figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-cat="ensaios">
+            <button type="button" class="gallery__btn" data-full="imagens/fotos/profissional-2000.webp">
+              <img src="imagens/fotos/profissional-640.webp" srcset="imagens/fotos/profissional-640.webp 640w, imagens/fotos/profissional-1200.webp 1200w" sizes="(min-width: 1000px) 33vw, (min-width: 600px) 50vw, 100vw" width="1200" height="1099" loading="lazy" decoding="async" alt="Retrato profissional de homem de terno cinza e gravata vermelha, sorrindo.">
+              <figcaption><strong>Retrato profissional</strong><span>Corporativo</span></figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-cat="familia">
+            <button type="button" class="gallery__btn" data-full="imagens/fotos/familia-2000.webp">
+              <img src="imagens/fotos/familia-640.webp" srcset="imagens/fotos/familia-640.webp 640w, imagens/fotos/familia-1200.webp 1200w" sizes="(min-width: 1000px) 33vw, (min-width: 600px) 50vw, 100vw" width="1200" height="795" loading="lazy" decoding="async" alt="Família de quatro pessoas vestidas de preto, abraçadas, em fundo escuro.">
+              <figcaption><strong>Família</strong><span>Ensaio em estúdio</span></figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-cat="eventos">
+            <button type="button" class="gallery__btn" data-full="imagens/fotos/formatura-2000.webp">
+              <img src="imagens/fotos/formatura-640.webp" srcset="imagens/fotos/formatura-640.webp 640w, imagens/fotos/formatura-1200.webp 1200w" sizes="(min-width: 1000px) 33vw, (min-width: 600px) 50vw, 100vw" width="1200" height="895" loading="lazy" decoding="async" alt="Formando de beca com faixa rosa, segurando capelo e canudo, sorrindo.">
+              <figcaption><strong>Formatura</strong><span>Beca &amp; capelo</span></figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-cat="ensaios">
+            <button type="button" class="gallery__btn" data-full="imagens/fotos/retrato-2000.webp">
+              <img src="imagens/fotos/retrato-640.webp" srcset="imagens/fotos/retrato-640.webp 640w, imagens/fotos/retrato-1200.webp 1200w" sizes="(min-width: 1000px) 33vw, (min-width: 600px) 50vw, 100vw" width="1200" height="1299" loading="lazy" decoding="async" alt="Retrato feminino de blazer preto em fundo bege.">
+              <figcaption><strong>Retrato</strong><span>Ensaio pessoal</span></figcaption>
+            </button>
+          </figure>
+          <figure class="gallery__item" data-cat="familia eventos">
+            <button type="button" class="gallery__btn" data-full="imagens/fotos/aniversario-2000.webp">
+              <img src="imagens/fotos/aniversario-640.webp" srcset="imagens/fotos/aniversario-640.webp 640w, imagens/fotos/aniversario-1200.webp 1200w" sizes="(min-width: 1000px) 33vw, (min-width: 600px) 50vw, 100vw" width="1200" height="907" loading="lazy" decoding="async" alt="Menino de camisa branca segurando um balão prateado do número 9.">
+              <figcaption><strong>Aniversário</strong><span>Ensaio de 9 anos</span></figcaption>
+            </button>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== SERVIÇOS ===================== -->
+    <section class="section section--light" id="servicos" aria-labelledby="servicos-titulo">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Serviços</p>
+          <h2 class="section__title" id="servicos-titulo">Escolha o seu ensaio</h2>
+          <p class="section__lead">Do retrato profissional à cobertura completa de eventos.</p>
+        </header>
+
+        <div class="services">
+          <article class="service reveal">
+            <span class="service__tag">Individual</span>
+            <h3 class="service__title">Retrato profissional</h3>
+            <p>Para profissionais, artistas e criadores de conteúdo que querem um retrato forte, atual e versátil.</p>
+            <ul class="service__list">
               <li>Direção completa durante o ensaio</li>
-              <li>10 fotos entregue em alta resolução em midia digital</li>
+              <li>10 fotos em alta resolução (mídia digital)</li>
               <li>Seleção guiada e tratamento fino</li>
             </ul>
-            <p class="service-card__price">A partir de R$ 280,00</p>
+            <p class="service__price"><small>a partir de</small> R$ 280</p>
+            <a class="btn btn--dark btn--block" data-whats="Retrato profissional" href="#contato">Quero este ensaio</a>
           </article>
 
-          <!-- Card 2 -->
-          <article class="service-card card">
-            <div class="service-card__header">
-              <span class="service-card__tag">Eventos</span>
-              <h3 class="service-card__title">Cobertura de Eventos e Formaturas</h3>
-            </div>
-            <p class="service-card__text">
-              Cobertura fotográfica profissional para eventos sociais, corporativos e formaturas,
-    com registro completo dos principais momentos.
-            </p>
-            <ul class="service-card__list">
+          <article class="service service--featured reveal">
+            <span class="service__tag">Maternidade</span>
+            <h3 class="service__title">Ensaio gestante</h3>
+            <p>Uma sessão para eternizar a gestação, com direção personalizada e edição profissional.</p>
+            <ul class="service__list">
+              <li>Escolha estratégica de cenário e figurino</li>
+              <li>Valorização da beleza e do momento</li>
+              <li>Fotos tratadas e prontas para as redes</li>
+            </ul>
+            <p class="service__price"><small>a partir de</small> R$ 280</p>
+            <a class="btn btn--gold btn--block" data-whats="Ensaio gestante" href="#contato">Quero este ensaio</a>
+          </article>
+
+          <article class="service reveal">
+            <span class="service__tag">Ensaios</span>
+            <h3 class="service__title">Família, infantil, casal e 15 anos</h3>
+            <p>Ensaios em estúdio, com cenários montados para cada história e muita paciência com os pequenos.</p>
+            <ul class="service__list">
+              <li>Cenário e proposta combinados antes</li>
+              <li>Direção leve e natural</li>
+              <li>Entrega em alta resolução</li>
+            </ul>
+            <p class="service__price service__price--consult">Sob consulta</p>
+            <a class="btn btn--dark btn--block" data-whats="Ensaio (família, infantil, casal ou 15 anos)" href="#contato">Pedir orçamento</a>
+          </article>
+
+          <article class="service reveal">
+            <span class="service__tag">Eventos</span>
+            <h3 class="service__title">Formaturas e eventos</h3>
+            <p>Cobertura fotográfica de formaturas, festas e eventos corporativos, com registro completo dos momentos.</p>
+            <ul class="service__list">
               <li>Planejamento alinhado ao tipo de evento</li>
-              <li>Registro completo da cerimônia e convidados</li>
-              <li>Entrega de imagens tratadas em alta resolução</li>
+              <li>Cerimônia, convidados e detalhes</li>
+              <li>Imagens tratadas em alta resolução</li>
             </ul>
-            <p class="service-card__price">Sob consulta</p>
-          </article>
-
-          <!-- Card 3 -->
-          <article class="service-card card">
-            <div class="service-card__header">
-              <span class="service-card__tag">Gestante</span>
-              <h3 class="service-card__title">Sessões fotográficas para gestantes</h3>
-            </div>
-            <p class="service-card__text">
-              Sessões fotográficas para gestantes, com direção personalizada e edição profissional.
-            </p>
-            <ul class="service-card__list">
-              <li>Escolha estratégica de locação</li>
-              <li>Valorização da beleza e do momento da gestação</li>
-              <li>Imagens tratadas e prontas para redes sociais</li>
-            </ul>
-            <p class="service-card__price">A partir de R$ 280,00</p>
+            <p class="service__price service__price--consult">Sob consulta</p>
+            <a class="btn btn--dark btn--block" data-whats="Cobertura de evento / formatura" href="#contato">Pedir orçamento</a>
           </article>
         </div>
       </div>
     </section>
 
-    <!-- EVENTOS -->
-<section class="section section--events" id="eventos">
-  <div class="container">
-    <div class="section__inner">
-      <header class="section__header">
-        <h2 class="section__title">Cobertura de eventos</h2>
-        <p class="section__subtitle">Momentos que merecem registro profissional</p>
-        <p class="section__text section__text--narrow">
-          Atuamos na cobertura fotográfica de eventos sociais, acadêmicos e corporativos,
-          registrando cada detalhe com qualidade, sensibilidade e atenção ao momento.
-        </p>
-      </header>
-
-      <div class="events-grid">
-        <article class="event-card card">
-          <h3 class="event-card__title">Formaturas</h3>
-          <p class="event-card__text">
-            Ensaios individuais e coletivos com becas e capelos, registros da cerimônia,
-            entrega de canudos, homenagens e fotos protocolares.
-          </p>
-          <ul class="event-card__examples">
-            <li>Fotos com beca e capelo</li>
-            <li>Registros da colação de grau</li>
-            <li>Retratos individuais e em grupo</li>
-          </ul>
-        </article>
-
-        <article class="event-card card">
-          <h3 class="event-card__title">Festas e eventos sociais</h3>
-          <p class="event-card__text">
-            Cobertura completa de festas, aniversários, confraternizações e eventos
-            comemorativos, com registros espontâneos e dirigidos.
-          </p>
-          <ul class="event-card__examples">
-            <li>Aniversários e celebrações</li>
-            <li>Eventos familiares</li>
-            <li>Momentos espontâneos e detalhes</li>
-          </ul>
-        </article>
-
-        <article class="event-card card ">
-          <h3 class="event-card__title">Eventos corporativos</h3>
-          <p class="event-card__text">
-            Registro profissional para empresas, instituições e organizações,
-            valorizando a imagem do evento e da marca.
-          </p>
-          <ul class="event-card__examples">
-            <li>Palestras e congressos</li>
-            <li>Eventos institucionais</li>
-            <li>Registros para divulgação</li>
-          </ul>
-        </article>
-      </div>
-<div class="events-portfolio">
-  <header class="events-portfolio__header">
-    <h3 class="events-portfolio__title">Eventos registrados</h3>
-    <p class="events-portfolio__text">
-      Alguns exemplos de formaturas, festas e eventos fotografados pelo estúdio.
-    </p>
-  </header>
-
-  <div class="portfolio__grid">
-    <figure class="portfolio__item card">
-      <div class="portfolio__figure">
-        <img
-          src="imagens/formatura.webp"
-          alt="Formatura com beca e capelo"
-          class="portfolio__image"
-        />
-      </div>
-      <figcaption class="portfolio__caption">
-        <h4 class="portfolio__title">Formatura</h4>
-        <p class="portfolio__category">Beca & Capelo</p>
-      </figcaption>
-    </figure>
-
-    <figure class="portfolio__item card">
-      <div class="portfolio__figure">
-        <img
-          src="imagens/aniversario.webp"
-          alt="Cobertura fotográfica de festa"
-          class="portfolio__image"
-        />
-      </div>
-      <figcaption class="portfolio__caption">
-        <h4 class="portfolio__title">Aniversário</h4>
-        <p class="portfolio__category">Festa</p>
-      </figcaption>
-    </figure>
-
-    <figure class="portfolio__item card">
-      <div class="portfolio__figure">
-        <img
-          src="imagens/15 anos.webp"
-          alt="Evento corporativo"
-          class="portfolio__image"
-        />
-      </div>
-      <figcaption class="portfolio__caption">
-        <h4 class="portfolio__title">Debutante</h4>
-        <p class="portfolio__category">Festa</p>
-      </figcaption>
-    </figure>
-  </div>
-</div>
-
-    </div>
-  </div>
-</section>
-
-      <!-- DIFERENCIAIS -->
-<section class="section section--highlights" id="diferenciais">
-  <div class="container">
-    <div class="section__inner">
-      <header class="section__header">
-        <h2 class="section__title">Diferenciais</h2>
-        <p class="section__subtitle">O que nos destaca</p>
-      </header>
-
-      <ul class="highlight-list">
-        <li class="highlight-item">Atendimento personalizado do início ao fim</li>
-        <li class="highlight-item">Equipamentos profissionais e iluminação controlada</li>
-        <li class="highlight-item">Edição cuidadosa com identidade visual consistente</li>
-        <li class="highlight-item">Entrega ágil e organizada</li>
-      </ul>
-    </div>
-  </div>
-</section>
-
-        
-    <!-- CONTATO -->
-    <section class="section section--contact" id="contact" aria-labelledby="contact-title">
-      <div class="container section__inner section__inner--two-columns">
-        <div class="section__content">
-          <h2 class="section__title" id="contact-title">Contato</h2>
-          <p class="section__text">
-            Envie uma mensagem com o tipo de sessão que você procura, datas
-            desejadas e qualquer referência que queira compartilhar. Retornamos
-            com todos os detalhes para o seu projeto.
-          </p>
-
-          <div class="contact__info">
-            <div class="contact__block card">
-              <h3 class="contact__label">E-mail</h3>
-              <a href="mailto:contato@lumenstudio.com" class="contact__value">
-                jonatanbreves@hotmail.com
-              </a>
+    <!-- ===================== EVENTOS ===================== -->
+    <section class="section section--dark" id="eventos" aria-labelledby="eventos-titulo">
+      <div class="container events">
+        <div class="events__intro reveal">
+          <p class="eyebrow eyebrow--light">Cobertura de eventos</p>
+          <h2 class="section__title" id="eventos-titulo">Momentos que merecem <em>registro profissional</em>.</h2>
+          <p>Eventos sociais, acadêmicos e corporativos registrados com qualidade, sensibilidade e atenção a cada detalhe.</p>
+          <a href="#contato" class="btn btn--gold" data-whats="Cobertura de evento / formatura">Solicitar orçamento</a>
+        </div>
+        <div class="events__list">
+          <article class="event reveal">
+            <span class="event__num">01</span>
+            <div>
+              <h3>Formaturas</h3>
+              <p>Ensaios com beca e capelo, colação de grau, entrega de canudos, homenagens e fotos protocolares.</p>
             </div>
-
-            <div class="contact__block card">
-              <h3 class="contact__label">Telefone / WhatsApp</h3>
-              <a
-                href="https://wa.me/5591992279801?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+sess%C3%A3o+de+fotos."
-                class="contact__value"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                (91) 9 9227-9801
-              </a>
+          </article>
+          <article class="event reveal">
+            <span class="event__num">02</span>
+            <div>
+              <h3>Festas e eventos sociais</h3>
+              <p>Aniversários, 15 anos, confraternizações e celebrações em família, com fotos espontâneas e dirigidas.</p>
             </div>
-
-            <div class="contact__block card">
-              <h3 class="contact__label">Endereço</h3>
-              <p class="contact__value">
-                Rua Justo Chermont, 1626 &bull; Bairro Aeroporto<br />
-                Breves &ndash; PA
-              </p>
+          </article>
+          <article class="event reveal">
+            <span class="event__num">03</span>
+            <div>
+              <h3>Eventos corporativos</h3>
+              <p>Palestras, congressos e eventos institucionais, com imagens prontas para a divulgação da sua marca.</p>
             </div>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            <div class="contact__block card">
-  <h3 class="contact__label">Redes sociais</h3>
-  <ul class="social-links">
-    <li>
-      <a href="https://www.instagram.com/jonatancastro_fotografia/" class="social-links__item" aria-label="Instagram">
-        Instagram
-      </a>
-    </li>
-    <li>
-      <a href="https://www.facebook.com/jonatancastrofotografia/" class="social-links__item" aria-label="Facebook">
-        Facebook
-      </a>
-    </li>
-  </ul>
-</div>
+    <!-- ===================== COMO FUNCIONA ===================== -->
+    <section class="section section--cream" id="como-funciona" aria-labelledby="processo-titulo">
+      <div class="container">
+        <header class="section__head reveal">
+          <p class="eyebrow">Como funciona</p>
+          <h2 class="section__title" id="processo-titulo">Do primeiro contato às fotos prontas</h2>
+        </header>
+        <ol class="steps">
+          <li class="step reveal"><span class="step__n">1</span><h3>Contato</h3><p>Você chama no WhatsApp e conta o que procura: tipo de ensaio, ideias e datas.</p></li>
+          <li class="step reveal"><span class="step__n">2</span><h3>Planejamento</h3><p>Combinamos cenário, figurino, horário e todos os detalhes da sessão.</p></li>
+          <li class="step reveal"><span class="step__n">3</span><h3>Ensaio</h3><p>No estúdio, com direção em cada pose para você ficar à vontade.</p></li>
+          <li class="step reveal"><span class="step__n">4</span><h3>Entrega</h3><p>Seleção guiada, tratamento fino e fotos em alta resolução.</p></li>
+        </ol>
+      </div>
+    </section>
 
+    <!-- ===================== DÚVIDAS ===================== -->
+    <section class="section section--light" id="duvidas" aria-labelledby="duvidas-titulo">
+      <div class="container faq-wrap">
+        <header class="section__head section__head--left reveal">
+          <p class="eyebrow">Dúvidas frequentes</p>
+          <h2 class="section__title" id="duvidas-titulo">Perguntas comuns</h2>
+          <p class="section__lead">Não encontrou o que queria? Fale com a gente no WhatsApp.</p>
+        </header>
+        <div class="faq reveal">
+          <details>
+            <summary>Como faço para agendar?</summary>
+            <p>Pelo WhatsApp <a href="https://wa.me/5591992279801" target="_blank" rel="noopener">(91) 9 9227-9801</a> ou pelo formulário no fim da página. Conte o tipo de ensaio e a data que prefere.</p>
+          </details>
+          <details>
+            <summary>Nunca fiz um ensaio. Vou ficar travado(a)?</summary>
+            <p>Fique tranquilo(a): a direção é feita pose a pose, justamente para quem não tem costume com câmeras.</p>
+          </details>
+          <details>
+            <summary>Quanto custa?</summary>
+            <p>Retrato profissional e ensaio gestante custam a partir de R$ 280. Demais ensaios e eventos são orçados conforme o que você precisa.</p>
+          </details>
+          <details>
+            <summary>Como recebo as fotos?</summary>
+            <p>Em mídia digital, em alta resolução, prontas para impressão e para as redes sociais.</p>
+          </details>
+          <details>
+            <summary>Vocês fotografam fora do estúdio?</summary>
+            <p>Sim, fazemos a cobertura de formaturas, festas e eventos corporativos no local do evento.</p>
+          </details>
+          <details>
+            <summary>Onde fica o estúdio?</summary>
+            <p>Rua Justo Chermont, 1626, Bairro Aeroporto, Breves – PA. <a href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Justo+Chermont+1626+Breves+PA" target="_blank" rel="noopener">Abrir no mapa</a>.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTATO ===================== -->
+    <section class="section section--dark" id="contato" aria-labelledby="contato-titulo">
+      <div class="container contact">
+        <div class="contact__info reveal">
+          <p class="eyebrow eyebrow--light">Contato</p>
+          <h2 class="section__title" id="contato-titulo">Vamos criar algo <em>bonito juntos</em>?</h2>
+          <p>Conte o tipo de sessão, a data desejada e suas referências. Respondemos com todos os detalhes.</p>
+
+          <ul class="contact__list">
+            <li>
+              <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+              <div><span>WhatsApp</span><a href="https://wa.me/5591992279801?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20de%20fotos." target="_blank" rel="noopener">(91) 9 9227-9801</a></div>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true"><use href="#i-mail"></use></svg>
+              <div><span>E-mail</span><a href="mailto:jonatanbreves@hotmail.com">jonatanbreves@hotmail.com</a></div>
+            </li>
+            <li>
+              <svg class="icon" aria-hidden="true"><use href="#i-pin"></use></svg>
+              <div><span>Estúdio</span><a href="https://www.google.com/maps/search/?api=1&amp;query=Rua+Justo+Chermont+1626+Breves+PA" target="_blank" rel="noopener">Rua Justo Chermont, 1626 • Aeroporto<br>Breves – PA</a></div>
+            </li>
+          </ul>
+
+          <div class="social">
+            <a href="https://www.instagram.com/jonatancastro_fotografia/" target="_blank" rel="noopener" aria-label="Instagram"><svg class="icon" aria-hidden="true"><use href="#i-instagram"></use></svg>Instagram</a>
+            <a href="https://www.facebook.com/jonatancastrofotografia/" target="_blank" rel="noopener" aria-label="Facebook"><svg class="icon" aria-hidden="true"><use href="#i-facebook"></use></svg>Facebook</a>
           </div>
         </div>
 
-        <!-- Formulário simples (placeholder, sem back-end) -->
-        <aside class="section__aside">
-          <form class="contact__form card" id="contact-form">
-            <h3 class="section__subtitle">Envie uma mensagem</h3>
+        <form class="form reveal" id="form-contato" novalidate>
+          <h3 class="form__title">Peça seu orçamento</h3>
+          <p class="form__hint">Ao enviar, a mensagem abre pronta no WhatsApp.</p>
+          <label class="field">
+            <span>Seu nome</span>
+            <input type="text" name="nome" autocomplete="name" required placeholder="Como podemos te chamar?">
+          </label>
+          <label class="field">
+            <span>Tipo de sessão</span>
+            <select name="servico" required>
+              <option value="">Selecione...</option>
+              <option>Ensaio gestante</option>
+              <option>Ensaio infantil</option>
+              <option>Ensaio de família</option>
+              <option>Ensaio de casal</option>
+              <option>Ensaio de 15 anos</option>
+              <option>Retrato profissional</option>
+              <option>Ensaio (família, infantil, casal ou 15 anos)</option>
+              <option>Cobertura de evento / formatura</option>
+              <option>Outro</option>
+            </select>
+          </label>
+          <label class="field">
+            <span>Data desejada <small>(opcional)</small></span>
+            <input type="date" name="data">
+          </label>
+          <label class="field">
+            <span>Mensagem</span>
+            <textarea name="mensagem" rows="4" placeholder="Conte um pouco sobre a sua ideia..."></textarea>
+          </label>
+          <p class="form__error" role="alert" hidden></p>
+          <button type="submit" class="btn btn--gold btn--block">
+            <svg class="icon" aria-hidden="true"><use href="#i-whatsapp"></use></svg>Enviar pelo WhatsApp
+          </button>
+        </form>
+      </div>
 
-            <div class="form-group">
-              <label for="name" class="form-label">Nome completo</label>
-              <input
-                type="text"
-                id="name"
-                name="name"
-                class="form-input"
-                placeholder="Como podemos te chamar?"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="email" class="form-label">E-mail</label>
-              <input
-                type="email"
-                id="email"
-                name="email"
-                class="form-input"
-                placeholder="seu@email.com"
-                required
-              />
-            </div>
-
-            <div class="form-group">
-              <label for="service" class="form-label">Tipo de sessão</label>
-              <select id="service" name="service" class="form-input">
-                <option value="">Selecione uma opção</option>
-                <option value="retrato">Retrato profissional</option>
-                <option value="editorial">Editorial / Campanha</option>
-                <option value="produto">Still / Produto</option>
-                <option value="outro">Outro</option>
-              </select>
-            </div>
-
-            <div class="form-group">
-              <label for="message" class="form-label">Mensagem</label>
-              <textarea
-                id="message"
-                name="message"
-                class="form-input form-input--textarea"
-                placeholder="Conte um pouco sobre o que você está buscando..."
-                rows="4"
-                required
-              ></textarea>
-            </div>
-
-            <button type="submit" class="btn btn--primary btn--block">
-              Enviar mensagem
-            </button>
-          </form>
-        </aside>
+      <div class="container map reveal">
+        <iframe title="Mapa do estúdio Jonatan Castro Fotografia"
+                src="https://www.google.com/maps?q=Rua+Justo+Chermont,+1626,+Breves+-+PA&amp;output=embed"
+                loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
       </div>
     </section>
   </main>
 
-  <!-- LIGHTBOX / MODAL PARA PORTFÓLIO -->
-  <div class="lightbox" id="lightbox" aria-hidden="true" role="dialog" aria-modal="true">
-    <div class="lightbox__inner">
-      <button
-        type="button"
-        class="lightbox__close"
-        aria-label="Fechar imagem em destaque"
-      >
-        ×
-      </button>
-      <figure class="lightbox__figure">
-        <img
-          src=""
-          alt=""
-          class="lightbox__image"
-        />
-        <figcaption class="lightbox__caption"></figcaption>
-      </figure>
-    </div>
-  </div>
-
-  <!-- BOTÃO FLUTUANTE DE WHATSAPP -->
-  <a
-    href="https://wa.me/5591992279801?text=Ol%C3%A1%2C+gostaria+de+agendar+uma+sess%C3%A3o+de+fotos."
-    class="whatsapp-floating"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Conversar no WhatsApp"
-  >
-    <span class="whatsapp-floating__icon"><img src="imagens/zap.png" id="logozap" alt="logo WhatsApp"></span>
-  </a>
-
-  <!-- FOOTER -->
+  <!-- ===================== RODAPÉ ===================== -->
   <footer class="footer">
     <div class="container footer__inner">
-      <p class="footer__copy">
-        &copy; <span id="current-year"></span> Jonatan Castro Fotografia . Todos os direitos reservados.
-      </p>
-      <ul class="footer__social">
-        <li><a href="https://www.instagram.com/jonatancastro_fotografia/" class="footer__link">Instagram</a></li>
-        <li><a href="https://www.facebook.com/jonatancastrofotografia/" class="footer__link">Facebook</a></li>
-      </ul>
+      <img src="imagens/marca/logo-dourado.webp" alt="Jonatan Castro Fotografia" width="800" height="413" class="footer__logo" loading="lazy">
+      <nav class="footer__nav" aria-label="Rodapé">
+        <a href="#sobre">Sobre</a><a href="#portfolio">Portfólio</a><a href="#servicos">Serviços</a><a href="#eventos">Eventos</a><a href="#contato">Contato</a>
+      </nav>
+      <p class="footer__copy">© <span id="ano">2026</span> Jonatan Castro Fotografia • Breves – PA</p>
     </div>
   </footer>
 
-  <!-- JavaScript principal -->
-  <script src="script/script.js"></script>
+  <!-- Botão flutuante do WhatsApp -->
+  <a href="https://wa.me/5591992279801?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20sess%C3%A3o%20de%20fotos." class="whats-float" target="_blank" rel="noopener" aria-label="Conversar no WhatsApp">
+    <svg aria-hidden="true"><use href="#i-whatsapp"></use></svg>
+  </a>
+
+  <!-- Visualizador de fotos -->
+  <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto em tela cheia" hidden>
+    <button type="button" class="lightbox__btn lightbox__close" aria-label="Fechar"><svg aria-hidden="true"><use href="#i-x"></use></svg></button>
+    <button type="button" class="lightbox__btn lightbox__prev" aria-label="Foto anterior"><svg aria-hidden="true"><use href="#i-left"></use></svg></button>
+    <figure class="lightbox__figure">
+      <img class="lightbox__img" alt="">
+      <figcaption class="lightbox__caption"></figcaption>
+    </figure>
+    <button type="button" class="lightbox__btn lightbox__next" aria-label="Próxima foto"><svg aria-hidden="true"><use href="#i-right"></use></svg></button>
+  </div>
+
+  <!-- Ícones -->
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path fill="currentColor" d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 0 0 4.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91A9.85 9.85 0 0 0 12.04 2Zm0 18.15h-.01a8.2 8.2 0 0 1-4.19-1.15l-.3-.18-3.12.82.83-3.04-.2-.31a8.21 8.21 0 0 1-1.26-4.38c0-4.54 3.7-8.24 8.25-8.24 2.2 0 4.27.86 5.83 2.42a8.18 8.18 0 0 1 2.41 5.83c0 4.54-3.7 8.23-8.24 8.23Zm4.52-6.16c-.25-.12-1.47-.72-1.69-.81-.23-.08-.39-.12-.56.13-.16.24-.64.8-.78.97-.14.17-.29.18-.54.06-.25-.12-1.05-.39-1.99-1.23-.74-.66-1.23-1.47-1.38-1.72-.14-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.13-.15.17-.25.25-.41.08-.17.04-.31-.02-.43-.06-.12-.56-1.34-.76-1.84-.2-.48-.41-.42-.56-.42h-.48c-.17 0-.43.06-.66.31-.22.25-.86.85-.86 2.07 0 1.22.89 2.4 1.01 2.56.12.17 1.75 2.67 4.24 3.74.59.26 1.05.41 1.41.52.59.19 1.13.16 1.56.1.48-.07 1.47-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.1-.23-.16-.48-.29Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="M20 6 9 17l-5-5"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="16" x="2" y="4" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></g></symbol>
+    <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></g></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect width="20" height="20" x="2" y="2" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><path d="M17.5 6.5h.01"/></g></symbol>
+    <symbol id="i-facebook" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" d="m9 18 6-6-6-6"/></symbol>
+  </svg>
+
+  <script src="script/script.js?v=2" defer></script>
 </body>
 </html>
